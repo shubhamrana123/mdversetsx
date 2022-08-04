@@ -6,10 +6,12 @@ const ProfileInfo = (props: IProfileInfoProps) => {
 		<>
 			<div className="info-heading">Conditions</div>
 			{props.profileInfo.map((item: any) => (
+				
 				<div className="profile-info">
 					<div className="profile-info-title">{item.profileInfoTitle}</div>
 					<div className="profile-info-desc">{item.profileInfoDesc}</div>
 				</div>
+				
 			))}
 			{/* <div className="profile-info">
 						<div className="profile-info-title">Medical Record Number</div>

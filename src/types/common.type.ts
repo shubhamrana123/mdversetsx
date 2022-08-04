@@ -1,8 +1,9 @@
 
+import { cardsTypes } from "./enum";
 
 export interface IConditionProps
 {
-    disease:Array<{id : number,name : string}>
+    disease:Array<{id : number,name : string,className:any}>
 }
 export interface IProfileInfoProps
 {
@@ -10,5 +11,15 @@ export interface IProfileInfoProps
 }
 export interface ICardProps
 {
-    cardInfo:Array<{id:number,cardTitle:string}>
+    cardInfo:Array<any>,
+    Heading : string,
+    type : cardsTypes
+}
+export interface IDataTableProps
+{
+dataTable:Array<{id:number,columnData:any ,rowData:any}>
+}
+export interface INotesProps
+{
+    noteInfo:Array<{id : number,noteChatPics : string,noteChatTexts:string}>
 }

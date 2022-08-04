@@ -6,9 +6,10 @@ function PatientCondition(props: IConditionProps) {
 		<>
 			{/* <div className="info-heading">Conditions</div> */}
 			<div className="pills-wrapper">
+			
 				{
 					props.disease.map((item: any) => (
-						<div className="pills solid" key={item.id}>{item.name}</div>
+						<div className=	{item.className} key={item.id}>{item.name}	</div>
 					))}
 
 			</div>

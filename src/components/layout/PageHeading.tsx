@@ -1,10 +1,14 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 function PageHeading() {
+let navigate = useNavigate()
+	const onClickHandler = () =>{
+navigate('/home')
+	}
   return (
    <>
    <div className="page-heading-wrapper">
-				<div className="page-heading-back-btn">
+				<div className="page-heading-back-btn" onClick={onClickHandler}>
 					{'<'}
 				</div>
 				<div className="page-heading-inner">

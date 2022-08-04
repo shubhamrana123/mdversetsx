@@ -5,15 +5,53 @@ import PatientCondition from "../components/home/PatientCondition";
 import Sidebar from "../components/layout/Sidebar";
 import FilterData from "../components/home/FilterData";
 import DataTable from "../components/layout/DataTable";
-
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import RightSidebar from "../components/layout/RightSidebar";
+import Notes from "../components/Notes";
 // import { DataGrid, GridColDef, GridApi, GridCellValue } from '@mui/x-data-grid';
 // import DataGrid from 'react-data-grid';
 
 const Home = () => {
-    const conditions = [{id : 1, name :"Pre-Diabetes"},{id : 2, name :"HyperTension"},
-    {id : 3, name :"Cardiac Arrest"},{id : 4, name :"Sleep Apnea"}];
+    const conditions = [{ id: 1, name: "Pre-Diabetes",className:'pills solid' }, { id: 2, name: "HyperTension",className:'pills solid' },
+    { id: 3, name: "Cardiac Arrest",className:'pills solid' }, { id: 4, name: "Sleep Apnea" ,className:'pills solid'}];
 
-    const moveToEncounterPage = () =>{
+    const columns: GridColDef[] = [
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'firstName', headerName: 'First name', width: 130 },
+        { field: 'lastName', headerName: 'Last name', width: 130 },
+        {
+            field: 'age',
+            headerName: 'Age',
+            type: 'number',
+            width: 90,
+        },
+        {
+            field: 'fullName',
+            headerName: 'Full name',
+            description: 'This column has a value getter and is not sortable.',
+            sortable: false,
+            width: 160,
+            valueGetter: (params: GridValueGetterParams) =>
+                `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        },
+    ];
+    const rows = [
+        { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+        { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+        { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+        { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+        { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+        { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+        { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+        { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+        { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    ];
+    const notesInfo = [ 
+        {id:1,noteChatPics:"MQ",noteChatTexts:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"},
+        {id:2,noteChatPics:"DR", noteChatTexts:    "	Lorem ipsum dolor sit amet."},
+       
+      ] 
+    const moveToEncounterPage = () => {
 
     }
     return (
@@ -33,14 +71,17 @@ const Home = () => {
                             <div className="info-heading">Encounters</div>
 
                             <FilterData></FilterData>
-                          <DataTable></DataTable>
+                            <DataTable columnData={columns} rowData={rows} ></DataTable>
+                           
                         </div>
-
+                       
                     </div>
-                  
+                   
                 </div>
+                <RightSidebar></RightSidebar>
+                <Notes noteInfo={notesInfo}></Notes>
             </div>
-            <button onClick={moveToEncounterPage}>heelo</button>
+           
         </>
     )
 
